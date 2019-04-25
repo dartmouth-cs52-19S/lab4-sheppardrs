@@ -13,7 +13,9 @@
     "deploy": "yarn build; surge -p dist -d shep-cs52-starter.surge.sh; yarn clean"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -37,8 +39,14 @@
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
+    "axios": "^0.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "jquery": "^3.3.1",
-    "postcss-loader": "^3.0.0"
+    "lodash.debounce": "^4.0.8",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
   }
 }
