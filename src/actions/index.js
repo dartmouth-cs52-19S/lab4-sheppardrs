@@ -44,12 +44,25 @@ export function fetchPosts() {
   };
 }
 
-export function fetchPost(id, history) {
+export function fetchPost(id) {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts/${id}`)
       .then((response) => {
         console.log('from action, post: ', response.data);
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: ActionTypes.ERROR_SET, error });
+      });
+  };
+}
+
+export function deletePost(id) {
+  return (dispatch) => {
+    axios.delete(`${ROOT_URL}/posts/${id}`)
+      .then((response) => {
+        fetchPosts();
+        // dispatch({ type: ActionTypes.DELETE_POST });
       })
       .catch((error) => {
         dispatch({ type: ActionTypes.ERROR_SET, error });

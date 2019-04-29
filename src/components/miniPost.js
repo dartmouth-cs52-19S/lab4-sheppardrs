@@ -6,17 +6,20 @@ class MiniPost extends React.Component {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.renderPost = this.renderPost.bind(this);
   }
 
   handleDelete() {
-    this.props.postDelete(this.props.id, this.props.history);
+    this.props.deletePost(this.props.post.id, this.props.history);
   }
 
   renderPost() {
     return (
       <div className="post">
         <div className="post-header">
-          <h4>{this.props.post.title}</h4>
+          <button type="button" onClick={() => this.props.history.push(`/posts/${this.props.post.id}`)}>
+            <h4>{this.props.post.title}</h4>
+          </button>
           <i
             onClick={this.handleDelete}
             tabIndex={-1}
