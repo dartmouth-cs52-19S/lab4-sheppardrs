@@ -14,3 +14,146 @@ body, html {
 .active {
     color: green;
 }
+
+// $button-color:  #aaf0d1;
+// $border-color: black;
+// //$logo-color: #C06958;
+// $logo-color: #E01A4F;
+// $background: #F3DFC1;
+// $accent-1: #1C75BC;
+// $accent-2: #280160;
+$button-color:  #ffbb93;
+$border-color: black;
+//$logo-color: #C06958;
+$logo-color: #ff8a65;
+$background: #EEEEEE;
+$accent-1: #ffbb93;
+$accent-2: #c75b39;
+
+
+body, html {
+  font-family: "Roboto", slab;
+  background: linear-gradient(to bottom, #FFFFFF 0%, $background 100%);
+  height: 100%;
+  color: $logo-color;
+}
+
+// .logo {
+//   background-image: url('img/Sharity_Logo.png');
+//   width: 100px;
+//   height: 100px;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+// }
+
+.post {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 5px 5px grey;
+  border: 3pt;
+  margin: 5%;
+  padding: 2pt 10pt 2pt 10pt;
+  background-color: white;
+  width: auto;
+}
+
+.post-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+  border-bottom-width: thin;
+}
+
+.post-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
+}
+
+i {
+  margin: 6pt;
+}
+
+#posts-section {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.addpost {
+  // border-top: 3pt solid $accent-1;
+  // border-bottom: 3pt solid $accent-1;
+  // border-radius: 10pt;
+  border-bottom: 2pt solid $accent-1;
+  margin: 3% 5%;
+  padding: 3% 3% 3% 3%;
+  color: $accent-2;
+}
+
+input {
+  margin: 2%;
+}
+
+textarea {
+  margin: 2%;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: $accent-1;
+  background-color: inherit;
+  font-size: 12pt;
+  color: $accent-2;
+}
+
+textarea::placeholder {
+  color: $accent-1;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.save-button {
+  border: solid;
+  border-width: 1pt;
+  border-radius: 20%;
+  background-color: $button-color;
+  color: $logo-color;
+}
+
+.save-button:hover {
+  background-color: darken($button-color, 10%);
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.navtab {
+  border: 2pt solid $accent-1;
+  background: white; 
+  padding: 1% 2%;
+  margin: 3% -1pt;
+  color: $accent-2;
+  font-size: 24pt;
+}
+
+.navtab-select {
+  border: 2pt solid $accent-1;
+  background: $accent-1; 
+  padding: 1% 2%;
+  margin: 3% -1px;
+  color: $accent-2;
+  font-size: 24pt;
+}
+
+.hide {
+  display: none;
+}
