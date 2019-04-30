@@ -6,6 +6,8 @@ import {
 // import Controls from '../containers/controls';
 import Posts from '../containers/posts';
 import Post from '../containers/post';
+import Create from '../containers/create';
+import EditPost from '../containers/edit';
 
 // const About = (props) => {
 //   return <div> All there is to know about me </div>;
@@ -46,7 +48,9 @@ const App = (props) => {
         <Switch>
           <Route exact path="/" component={Posts} />
           <Route exact path="/posts" component={Posts} />
+          <Route exact path="/posts/new" component={Create} />
           <Route exact path="/posts/:postID" component={Post} />
+          <Route exact path="/posts/:postID/edit" component={EditPost} />
           <Route component={FallBack} />
         </Switch>
       </div>

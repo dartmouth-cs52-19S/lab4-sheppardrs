@@ -4,6 +4,8 @@ const PostReducer = (state = 0, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_POST:
       return action.payload;
+    case ActionTypes.CLEAR_POST:
+      return { title: '', content: '' };
     default:
       return state;
   }
