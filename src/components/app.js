@@ -18,8 +18,8 @@ const Nav = (props) => {
   return (
     <nav>
       <ul>
-        <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/posts/new">Add</NavLink></li>
+        <li><NavLink to="/" exact>Meal Hacks</NavLink></li>
+        <li><NavLink to="/posts/new">New Meal</NavLink></li>
       </ul>
     </nav>
   );

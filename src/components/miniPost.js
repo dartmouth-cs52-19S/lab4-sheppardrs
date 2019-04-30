@@ -27,6 +27,7 @@ class MiniPost extends React.Component {
             className="fas fa-trash"
             role="button"
           />
+          <h2>{this.props.post.tags}</h2>
         </div>
         <img src={this.props.post.cover_url} alt="cover" />
         {/* <div className="post-main">

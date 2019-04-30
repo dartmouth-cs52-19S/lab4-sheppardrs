@@ -81,22 +81,32 @@ nav a {
   height: 28vh;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  align-content: center;
   background-color: rgba($background, .2);
   // border-style: solid;
   // border-color: grey;
   border-width: thin;
   z-index: 1; 
 }
-
+.post-header h4 {
+  margin: 0;
+}
+.post-header h2 {
+  width: 80%;
+  text-align: center;
+}
 button {
   background: none;
   border: none;
   font-size: 24pt;
   color: $accent;
 }
-
+i {
+  font-size: 18pt;
+}
 
 button:hover {
   color: $text-hover;
@@ -159,6 +169,7 @@ i:hover {
   bottom: 2.5vh;
   left: 2.5vh;
   color: $accent;
+  font-size: 24pt;
   // display: flex;
   // flex-direction: row;
   // justify-content: space-between;
@@ -169,6 +180,7 @@ i:hover {
   bottom: 2.5vh;
   right: 2.5vh;
   color: $accent;
+  font-size: 24pt;
   // display: flex;
   // flex-direction: row;
   // justify-content: space-between;
