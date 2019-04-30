@@ -29,6 +29,19 @@ class Create extends Component {
   }
 
   render() {
+    const contentEx = (`
+    # Goal
+    What are you doing with this mean
+
+    # Ingredients
+    * What
+    * Goes 
+    * In
+    * It\n
+    
+    # Process
+    1. How to
+    2. Cook it`);
     return (
       <div className="full-post">
         <form onSubmit={this.submit} className="addnote">
@@ -75,7 +88,7 @@ class Create extends Component {
                 className="post-body"
                 type="text"
                 name="content"
-                placeholder="content (markdown)"
+                placeholder={contentEx}
                 value={this.props.post.content}
                 onChange={this.edit}
               />
