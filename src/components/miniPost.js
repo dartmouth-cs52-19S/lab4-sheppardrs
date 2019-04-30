@@ -15,6 +15,7 @@ class MiniPost extends React.Component {
 
   renderPost() {
     return (
+      // eslint-disable-next-line prefer-template
       <div className="post">
         <div className="post-header">
           <button type="button" onClick={() => this.props.history.push(`/posts/${this.props.post.id}`)}>
@@ -27,9 +28,10 @@ class MiniPost extends React.Component {
             role="button"
           />
         </div>
-        <div className="post-main">
+        <img src={this.props.post.cover_url} alt="cover" />
+        {/* <div className="post-main">
           <img src={this.props.post.cover_url} alt="cover" />
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -30,47 +30,62 @@ class Create extends Component {
 
   render() {
     return (
-      <div className="post">
+      <div className="full-post">
         <form onSubmit={this.submit} className="addnote">
-          <div className="post-header">
-            <textarea
-              type="text"
-              name="title"
-              placeholder="title"
-              value={this.props.post.title}
-              onChange={this.edit}
-            />
-            <i
-              onClick={this.handleDelete}
-              tabIndex={-1}
-              className="fas fa-trash"
-              role="button"
-            />
-            {/* <i
-              onClick={this.handleEdit}
-              tabIndex={-1}
-              className="fas fa-edit"
-              role="button"
-            /> */}
+          <div>
+            <div className="post-header-full">
+              <div><img src={this.props.post.cover_url} alt="cover" /></div>
+              <textarea
+                type="text"
+                name="title"
+                placeholder="title"
+                value={this.props.post.title}
+                onChange={this.edit}
+              />
+              <textarea
+                type="text"
+                name="cover_url"
+                placeholder="image url"
+                value={this.props.post.cover_url}
+                onChange={this.edit}
+              />
+              {/* <i
+                onClick={this.handleDelete}
+                tabIndex={-1}
+                className="fas fa-trash"
+                role="button"
+              /> */}
+              {/* <i
+                onClick={this.handleEdit}
+                tabIndex={-1}
+                className="fas fa-edit"
+                role="button"
+              /> */}
+            </div>
+            <div className="tags-content">
+              <textarea
+                // className="postBody"
+                type="text"
+                name="tags"
+                placeholder="#tags"
+                value={this.props.post.tags}
+                onChange={this.edit}
+              />
+              <textarea
+                className="post-body"
+                type="text"
+                name="content"
+                placeholder="content (markdown)"
+                value={this.props.post.content}
+                onChange={this.edit}
+              />
+            </div>
           </div>
-          <textarea
-            // className="postBody"
-            type="text"
-            name="content"
-            placeholder="what?"
-            value={this.props.post.content}
-            onChange={this.edit}
-          />
-          {/* <div
-            className="postBody"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: marked(this.props.post.text || ''),
-            }}
-          /> */}
-          <button className="save-button" type="submit" value="Submit">
-            <i className="fas fa-save" />
-          </button>
+          <div className="buttons">
+            <button className="save-button" type="submit" value="Submit">
+              <i className="fas fa-save" />
+            </button>
+          </div>
         </form>
       </div>
     );

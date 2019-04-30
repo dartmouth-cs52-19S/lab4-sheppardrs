@@ -19,9 +19,9 @@ class Posts extends Component {
   }
 
   render() {
-    console.log('logging posts: ');
-    console.log(this.props.posts);
-    console.log(this.props.posts[0]);
+    // console.log('logging posts: ');
+    // console.log(this.props.posts);
+    // console.log(this.props.posts[0]);
     if (this.props.posts[0] === undefined) {
       return (<div>Loading...</div>);
     }
@@ -35,7 +35,7 @@ class Posts extends Component {
     ));
     // this.props.fetchPost(this.props.posts[0].id, this.props.history);
     if (this.state.isEditing) { console.log('hi'); }
-    return (<div>Welcome to posts {posts}</div>);
+    return (<div>{posts}</div>);
   }
 }
 

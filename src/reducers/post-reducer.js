@@ -5,7 +5,9 @@ const PostReducer = (state = 0, action) => {
     case ActionTypes.FETCH_POST:
       return action.payload;
     case ActionTypes.CLEAR_POST:
-      return { title: '', content: '' };
+      return {
+        title: '', content: '', tags: '', cover_url: '',
+      };
     default:
       return state;
   }

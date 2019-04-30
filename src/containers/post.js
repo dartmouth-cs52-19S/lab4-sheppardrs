@@ -39,9 +39,25 @@ class Post extends React.Component {
 
   renderPost() {
     return (
-      <div className="post">
-        <div className="post-header">
-          <h4>{this.props.post.title}</h4>
+      <div className="full-post">
+        <div>
+          <div className="post-header-full">
+            <div><img src={this.props.post.cover_url} alt="cover" /></div>
+            <h4>{this.props.post.title}</h4>
+          </div>
+          {/* <p>{this.props.post.text}</p> */}
+          <div className="tags-content">
+            <div>{this.props.post.tags}</div>
+            <div
+              className="post-body"
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: marked(this.props.post.content || ''),
+              }}
+            />
+          </div>
+        </div>
+        <div className="buttons">
           <i
             onClick={this.handleDelete}
             tabIndex={-1}
@@ -55,14 +71,6 @@ class Post extends React.Component {
             role="button"
           />
         </div>
-        {/* <p>{this.props.post.text}</p> */}
-        <div
-          className="postBody"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: marked(this.props.post.text || ''),
-          }}
-        />
       </div>
     );
   }

@@ -2,8 +2,6 @@ import axios from 'axios';
 
 // keys for actiontypes
 export const ActionTypes = {
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
   FETCH_POSTS: 'FETCH_POSTS',
   FETCH_POST: 'FETCH_POST',
   CLEAR_POST: 'CLEAR_POST',
@@ -12,20 +10,6 @@ export const ActionTypes = {
 
 const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
 const API_KEY = '?key=s_somers';
-
-export function increment() {
-  return {
-    type: ActionTypes.INCREMENT,
-    payload: null,
-  };
-}
-
-export function decrement() {
-  return {
-    type: ActionTypes.DECREMENT,
-    payload: null,
-  };
-}
 
 export function changePost(post) {
   return {
@@ -46,7 +30,7 @@ export function fetchPosts() {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts${API_KEY}`)
       .then((response) => {
-        console.log('GOT the posts');
+        // console.log('GOT the posts');
         dispatch({ type: ActionTypes.FETCH_POSTS, payload: response.data });
       })
       .catch((error) => {
@@ -62,7 +46,7 @@ export function fetchPost(id) {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`)
       .then((response) => {
-        console.log('from action, post: ', response.data);
+        // console.log('from action, post: ', response.data);
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
       })
       .catch((error) => {
@@ -73,7 +57,7 @@ export function fetchPost(id) {
 
 export function deletePost(id, history) {
   const hasHist = arguments.length === 2;
-  console.log(arguments.length); // from: https://stackoverflow.com/questions/411352/how-best-to-determine-if-an-argument-is-not-sent-to-the-javascript-function
+  // console.log(arguments.length); // from: https://stackoverflow.com/questions/411352/how-best-to-determine-if-an-argument-is-not-sent-to-the-javascript-function
   return (dispatch) => {
     axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
       .then((response) => {
@@ -81,8 +65,8 @@ export function deletePost(id, history) {
           history.push('/posts');
         }
         dispatch(fetchPosts()); // from: https://stackoverflow.com/questions/43130915/redux-how-to-call-an-action-creator-from-inside-another-action-creator
-        console.log('called fetchposts from delete');
-        console.log(response);
+        // console.log('called fetchposts from delete');
+        // console.log(response);
         // dispatch({ type: ActionTypes.DELETE_POST });
       })
       .catch((error) => {
@@ -126,7 +110,7 @@ export function createPost(history) {
 export function editPost(history) {
   return (dispatch, getState) => {
     const { post } = getState();
-    console.log(post._id);
+    // console.log(post._id);
     axios.put(`${ROOT_URL}/posts/${post._id}${API_KEY}`, post)
       .then((response) => {
         history.push(`/posts/${response.data._id}`);

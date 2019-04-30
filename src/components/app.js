@@ -9,21 +9,7 @@ import Post from '../containers/post';
 import Create from '../containers/create';
 import EditPost from '../containers/edit';
 
-// const About = (props) => {
-//   return <div> All there is to know about me </div>;
-// };
-// const Welcome = (props) => {
-//   return (
-//     <div>
-//       Welcome
-//       <Counter />
-//       <Controls />
-//     </div>
-//   );
-// };
-// const Test = (props) => {
-//   return <div> ID: {props.match.params.id} </div>;
-// };
+
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
