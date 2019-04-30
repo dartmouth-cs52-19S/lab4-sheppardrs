@@ -21,6 +21,9 @@ nav {
   margin: 0;
   width: 100%;
   height: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 nav ul {
   margin: 0;
@@ -28,9 +31,9 @@ nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 nav li {
-  margin: 2%;
   font-weight: 900;
   font-size: 18pt;
 }
@@ -46,6 +49,7 @@ nav a {
   color: $text-hover;
 }
 
+//  post in main page
 .post {
   // display: flex;
   // flex-direction: column;
@@ -104,6 +108,7 @@ i:hover {
   transition: ease .5s;
 }
 
+// full page post view
 .full-post {
   height: 95vh;
   width: 101%;
@@ -173,6 +178,7 @@ i:hover {
   color: $text-hover;
 }
 
+// general and editing
 .post-main {
   display: flex;
   flex-direction: column;
