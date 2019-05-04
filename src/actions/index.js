@@ -6,6 +6,9 @@ export const ActionTypes = {
   FETCH_POST: 'FETCH_POST',
   CLEAR_POST: 'CLEAR_POST',
   ERROR_SET: 'ERROR_SET',
+  AUTH_USER: 'AUTH_USER',
+  DEAUTH_USER: 'DEAUTH_USER',
+  AUTH_ERROR: 'AUTH_ERROR',
 };
 
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
@@ -64,7 +67,7 @@ export function deletePost(id, history) {
   const hasHist = arguments.length === 2;
   // console.log(arguments.length); // from: https://stackoverflow.com/questions/411352/how-best-to-determine-if-an-argument-is-not-sent-to-the-javascript-function
   return (dispatch) => {
-    axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
+    axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`, null, { headers: { authorization: localStorage.getItem('token') } })
       .then((response) => {
         if (hasHist) {
           history.push('/posts');
@@ -98,7 +101,7 @@ export function deletePost(id, history) {
 export function createPost(history) {
   return (dispatch, getState) => {
   // console.log(getState().post);
-    axios.post(`${ROOT_URL}/posts/${API_KEY}`, getState().post)
+    axios.post(`${ROOT_URL}/posts/${API_KEY}`, getState().post, { headers: { authorization: localStorage.getItem('token') } })
       .then((response) => {
         history.push(`/posts/${response.data._id}`);
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
@@ -116,7 +119,7 @@ export function editPost(history) {
   return (dispatch, getState) => {
     const { post } = getState();
     // console.log(post._id);
-    axios.put(`${ROOT_URL}/posts/${post._id}${API_KEY}`, post)
+    axios.put(`${ROOT_URL}/posts/${post._id}${API_KEY}`, post, { headers: { authorization: localStorage.getItem('token') } })
       .then((response) => {
         history.push(`/posts/${response.data._id}`);
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
@@ -145,3 +148,56 @@ export function editPost(history) {
 //       });
 //   };
 // }
+
+export function authError(error) {
+  return {
+    type: ActionTypes.AUTH_ERROR,
+    message: error,
+  };
+}
+
+// signin user using thunk to post to signin route with email and password
+// store token on success and dispatch AUTH_USER action
+export function signinUser({ email, password }, history) {
+  // from createPost
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signin${API_KEY}`, { email, password }).then((response) => {
+      // do something with the response.data (some json)
+      // console.log('posts is: ', posts);
+      localStorage.setItem('token', response.data.token);
+      dispatch({ type: ActionTypes.AUTH_USER });
+      history.push('/');
+    }).catch((error) => {
+      // hit an error -> do something else
+      dispatch(authError(`Signin failed: ${error.response.data}`));
+      console.log('FAILED IN ACTION createPost');
+    });
+  };
+}
+
+// Same as signin but using signup route
+export function signupUser({ email, password }, history) {
+  // from createPost
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signup`, { email, password }).then((response) => {
+      // do something with the response.data (some json)
+      localStorage.setItem('token', response.data.token);
+      history.push('/');
+      dispatch({ type: ActionTypes.AUTH_USER });
+    }).catch((error) => {
+      // hit an error -> do something else
+      dispatch(authError(`Signin failed: ${error.response.data}`));
+      console.log('FAILED IN ACTION signupUser');
+    });
+  };
+}
+
+// deletes token from localstorage
+// and dispatches deauth action
+export function signoutUser(history) {
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({ type: ActionTypes.DEAUTH_USER });
+    history.push('/');
+  };
+}
