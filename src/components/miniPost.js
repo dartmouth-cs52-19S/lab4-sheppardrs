@@ -28,6 +28,7 @@ class MiniPost extends React.Component {
             role="button"
           />
           <h2>{this.props.post.tags}</h2>
+          <h2>{this.props.post.authorName}</h2>
         </div>
         <img src={this.props.post.cover_url} alt="cover" />
         {/* <div className="post-main">

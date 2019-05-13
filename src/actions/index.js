@@ -14,9 +14,9 @@ export const ActionTypes = {
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
 const API_KEY = '?key=s_somers';
 // local testing
-// const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'http://localhost:9090/api';
 // heroku database
-const ROOT_URL = 'https://cs52blogs.herokuapp.com/api';
+// const ROOT_URL = 'https://cs52blogs.herokuapp.com/api';
 
 
 export function changePost(post) {
@@ -67,7 +67,8 @@ export function deletePost(id, history) {
   const hasHist = arguments.length === 2;
   // console.log(arguments.length); // from: https://stackoverflow.com/questions/411352/how-best-to-determine-if-an-argument-is-not-sent-to-the-javascript-function
   return (dispatch) => {
-    axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`, null, { headers: { authorization: localStorage.getItem('token') } })
+    console.log('in return of delete');
+    axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`, { headers: { authorization: localStorage.getItem('token') } })
       .then((response) => {
         if (hasHist) {
           history.push('/posts');
@@ -78,6 +79,7 @@ export function deletePost(id, history) {
         // dispatch({ type: ActionTypes.DELETE_POST });
       })
       .catch((error) => {
+        console.log('Error in delete post');
         dispatch({ type: ActionTypes.ERROR_SET, error });
       });
   };
@@ -170,16 +172,16 @@ export function signinUser({ email, password }, history) {
     }).catch((error) => {
       // hit an error -> do something else
       dispatch(authError(`Signin failed: ${error.response.data}`));
-      console.log('FAILED IN ACTION createPost');
+      console.log('FAILED IN ACTION signinUser');
     });
   };
 }
 
 // Same as signin but using signup route
-export function signupUser({ email, password }, history) {
+export function signupUser({ email, password, username }, history) {
   // from createPost
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/signup`, { email, password }).then((response) => {
+    axios.post(`${ROOT_URL}/signup`, { email, password, username }).then((response) => {
       // do something with the response.data (some json)
       localStorage.setItem('token', response.data.token);
       history.push('/');

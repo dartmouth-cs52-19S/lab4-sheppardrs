@@ -37,6 +37,15 @@ nav li {
   font-weight: 900;
   font-size: 18pt;
 }
+nav li button {
+  color: $background;
+  font-size: 18pt;
+}
+nav li button:hover {
+  font-size: 19pt;
+  transition: ease .5s;
+  color: $background;
+}
 nav li:hover {
   font-size: 19pt;
   transition: ease .5s;
@@ -223,4 +232,34 @@ textarea {
 
 textarea::placeholder {
   color: $text-hover;
+}
+
+// sign in form
+.full-sign {
+  height: 30%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 12.5%;
+}
+// .addnote {
+//   display: flex;
+//   flex-flow: column;
+// }
+.sign-button-active {
+  color: white;
+  background-color: $accent;
+  transition: ease .5s;
+}
+.sign-button {
+  color: $accent;
+  transition: ease .5s;
+}
+.toggle {
+  // display: flex;
+  border: solid white 1pt;
+  display: inline-block; // without this thespan is too small.
+  align-self: center;
 }
