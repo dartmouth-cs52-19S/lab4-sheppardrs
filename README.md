@@ -5,6 +5,8 @@ Sheppard Somers
 # Goal 
 Create a CRUD application for foco meal hacks to share your favorite meal combinations at foco.  
 
+As part of lab5 part two it now includes user authentication. This allows you to sign up, sign in, and sign out. You must be authenticated to create, delete, or edit a post. You do not have to be the author to delete or edit a post that someone else created. 
+
 # Tech
 Uses the react/redux etc. [starterpack](https://github.com/dartmouth-cs52-19S/starterpack-sheppardrs) that I created. 
 
